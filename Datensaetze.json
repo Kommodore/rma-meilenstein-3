@@ -1,0 +1,13 @@
+{"activities":[
+	{
+		"type":"running", 
+		"time":"(timestamp)", 
+		"duration":30000, 
+		"coords":[
+			{"long":x1, "lat":y1}
+		]
+	}
+]}
+
+
+

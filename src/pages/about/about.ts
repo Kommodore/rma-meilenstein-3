@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
 import { LocalStorageService } from "../../providers/local-storage-service-rest";
+
 
 @Component({
   selector: 'page-about',
@@ -10,7 +11,11 @@ export class AboutPage {
 
   activities: any[];
 
-  constructor(public navCtrl: NavController, private localStorage: LocalStorageService) {
+  constructor(
+    public navCtrl: NavController,
+    private localStorage: LocalStorageService,
+    private modal: ModalController
+  ) {
     this.initActivities();
   }
 
@@ -24,7 +29,8 @@ export class AboutPage {
   };
 
   showModal() {
-    console.log("Test");
+    const modalPage = this.modal.create("infomodal");
+    modalPage.present();
   }
 
 }

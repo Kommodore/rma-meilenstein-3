@@ -2,8 +2,6 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { LocalStorageService } from '../providers/local-storage-service-rest';
-import { Storage } from '@ionic/storage';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -12,6 +10,10 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
+import {LocalStorageService} from "../providers/local-storage-service-rest";
+import {HttpModule} from "@angular/http";
+import {IonicStorageModule} from "@ionic/storage";
 
 @NgModule({
   declarations: [
@@ -22,8 +24,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TabsPage
   ],
   imports: [
-    BrowserModule,
-    IonicModule.forRoot(MyApp)
+      BrowserModule,
+      IonicModule.forRoot(MyApp),
+      IonicStorageModule.forRoot(),
+      HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -37,8 +41,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    LocalStorageService,
-    Storage
+    LocalStorageService
   ]
 })
 export class AppModule { }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import {LocalStorageService} from "../../providers/local-storage-service-rest";
+import { LocalStorageService } from "../../providers/local-storage-service-rest";
 
 @Component({
   selector: 'page-about',

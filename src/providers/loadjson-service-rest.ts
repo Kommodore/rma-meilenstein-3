@@ -1,27 +1,22 @@
 import 'rxjs/Rx';
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
-
-let brokersURL = 'http://localhost:8100/src/assets/data/data';
+import {LocalStorageService} from "./local-storage-service-rest";
 
 @Injectable()
 export class LoadjsonService {
 
-    constructor(public http: Http) {
-
+    constructor(public http: Http, private storage: LocalStorageService) {
+        this.checkForLSContent();
     }
 
-    findAll() {
-        alert("findall");
-        return this.http.get(brokersURL)
-            .map(res => res.json())
-            .toPromise();
+    checkForLSContent(){
+        let activities = this.storage.getActivities();
+        /*if(activities.length == 0){
+            let json: any[] = this.http.get('../assets/data/activities.json');
+            for(let i = 0; i < json.length; i++){
+                this.storage.setActivity(json[i]);
+            }
+        }*/
     }
-
-    findById(id) {
-        return this.http.get(brokersURL + id)
-            .map(res => res.json())
-            .toPromise();
-    }
-
 }

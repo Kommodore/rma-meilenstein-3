@@ -23,4 +23,8 @@ export class AboutPage {
     ];
   };
 
+  showModal() {
+    console.log("Test");
+  }
+
 }

@@ -10,7 +10,7 @@
 
   <ion-list>
     <ion-list-header>Recent</ion-list-header>
-    <button ion-item *ngFor="let testItem of testItems">{{testItem}}</button>
+    <button ion-item *ngFor="let activity of activities" (click)="">{{activity.type}}</button>
   </ion-list>
 
 </ion-content>

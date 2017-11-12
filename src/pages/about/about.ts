@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import { Storage } from '@ionic/storage';
+import { localStorageService } from '../../providers/local-storage-service-rest';
 
 @Component({
   selector: 'page-about',
@@ -10,16 +8,19 @@ import { Storage } from '@ionic/storage';
 })
 export class AboutPage {
 
-  constructor(public navCtrl: NavController) {
+  activities: any[];
+
+  constructor(public navCtrl: NavController, private localStorage: localStorageService) {
+    this.initActivities();
   }
 
-  testItems=[
-    "Workout1",
-    "Workout2",
-    "Workout3",
-    "Workout4",
-    "Workout5",
-    "Workout6",
-  ];
+  initActivities() {
+    activities = [
+      { "type": "running", "dist": "100" },
+      { "type": "running", "dist": "100" },
+      { "type": "running", "dist": "100" },
+      { "type": "running", "dist": "100" }
+    ];
+  };
 
 }

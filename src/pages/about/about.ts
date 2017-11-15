@@ -20,12 +20,7 @@ export class AboutPage {
   }
 
   initActivities() {
-    this.activities = [
-      { "type": "running", "dist": "100" },
-      { "type": "running", "dist": "100" },
-      { "type": "running", "dist": "100" },
-      { "type": "running", "dist": "100" }
-    ];
+    this.activities = this.localStorage.getActivities();
   };
 
   showModal() {

@@ -1,20 +1,34 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { Storage } from '@ionic/storage';
+import {Storage} from "@ionic/storage";
 
 @Injectable()
 export class LocalStorageService {
 
+  activities: any[] = [];
   constructor(public http: Http, private storage: Storage) {
-    console.log('Hello Localstorage Provider');
+    this.fetchActivities();
+  }
+
+  fetchActivities(){
+      let data = JSON.parse(window.localStorage.getItem("activities"));
+      if(data != null){
+          this.activities = data;
+      }
+
+      /*this.storage.get("activities").then(content => {
+      this.activities = JSON.parse(content);
+    }).catch(reason => {
+        console.log("Fehler beim auslesen aus dem Local Storage: "+reason);
+    });*/
   }
 
   getActivities() {
-    return JSON.parse(this.storage.get("activity").toString());
+      return this.activities;
   }
 
   getActivity(index) {
-    return this.getActivities()[index];
+    return this.activities[index];
   }
 
   /**
@@ -23,12 +37,17 @@ export class LocalStorageService {
    * @param activity
    */
   setActivity(activity) {
-    let activities: any[] = this.getActivities();
-    activities.push(activity);
-
-    this.storage.set("activity", activities).catch(reason => {
+    if(this.activities){
+        this.activities.push(activity);
+    } else {
+      this.activities[0] = activity
+    }
+    window.localStorage.setItem("activities", JSON.stringify(this.activities));
+    /*this.storage.set("activities", JSON.stringify(this.activities)).then(data => {
+      console.log("Added to storage "+ data);
+    }).catch(reason => {
       console.log("Could not save activity to storage: " + reason);
-    });
+    });*/
   }
 
   /**
@@ -37,10 +56,9 @@ export class LocalStorageService {
    * @param index
    */
   removeActivity(index) {
-    let activities = this.getActivities();
-    activities.splice(index, 1);
+    this.activities.splice(index, 1);
 
-    this.storage.set("activity", activities).catch(reason => {
+    this.storage.set("activities", this.activities).catch(reason => {
       console.log("Could not remove activity: " + reason);
     })
   }
@@ -49,9 +67,9 @@ export class LocalStorageService {
    * Clear the whole local storage
    */
   clearStorage() {
-    this.storage.clear().then(() => {
+    /*this.storage.clear().then(() => {
       console.log("Local storage cleared");
-    });
+    });*/
   }
 
 }

@@ -11,7 +11,7 @@
 		<ion-list-header>Recent</ion-list-header>
 		<button ion-item *ngFor="let activity of activities" (click)="showModal()">{{activity.type}}</button>
 	</ion-list>
-	<ion-fab bottom center>
+	<ion-fab bottom right>
 		<button ion-fab (click)="addActivity()">
 			<ion-icon name="add"></ion-icon>
 		</button>

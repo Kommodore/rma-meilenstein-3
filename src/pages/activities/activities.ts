@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
-import { LocalStorageService } from "../../providers/local-storage-service-rest";
+
+import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
+import {EditActivitiesComponent} from "./edit-activities.component";
 
 
 @Component({
@@ -13,7 +15,7 @@ export class ActivitiesPage {
 
   constructor(
     public navCtrl: NavController,
-    private localStorage: LocalStorageService,
+    private localStorage: LocalStorageProvider,
     private modal: ModalController
   ) {
     this.initActivities();
@@ -23,9 +25,15 @@ export class ActivitiesPage {
     this.activities = this.localStorage.getActivities();
   };
 
-  showModal() {
-    const modalPage = this.modal.create("infomodal");
-    modalPage.present().then((reason) => {
+  showModal(index: number = 0) {
+    if(index){
+      console.log("Activity: $(index)");
+    } else {
+      console.log("No index");
+    }
+
+    let editActivity = this.modal.create(EditActivitiesComponent);
+    editActivity.present().then((reason) => {
 
     });
   }

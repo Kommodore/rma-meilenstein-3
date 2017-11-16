@@ -4,10 +4,10 @@ import { LocalStorageService } from "../../providers/local-storage-service-rest"
 
 
 @Component({
-  selector: 'page-about',
-  templateUrl: 'about.html'
+  selector: 'page-activities',
+  templateUrl: 'activities.html'
 })
-export class AboutPage {
+export class ActivitiesPage {
 
   activities: any[];
 
@@ -25,7 +25,13 @@ export class AboutPage {
 
   showModal() {
     const modalPage = this.modal.create("infomodal");
-    modalPage.present();
+    modalPage.present().then((reason) => {
+
+    });
+  }
+
+  addActivity(){
+
   }
 
 }

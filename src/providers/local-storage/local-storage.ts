@@ -14,7 +14,6 @@ export class LocalStorageProvider {
     activities: any[] = [];
 
     constructor(public http: Http, private storage: Storage) {
-        console.log('Hello LocalStorageProvider Provider');
         this.fetchActivities();
     }
 
@@ -47,7 +46,6 @@ export class LocalStorageProvider {
         }
 
         this.storage.set("activities", JSON.stringify(this.activities)).then(data => {
-          console.log("Added to storage "+ data);
         }).catch(reason => {
           console.log("Could not save activity to storage: " + reason);
         });

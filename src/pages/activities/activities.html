@@ -9,7 +9,9 @@
 <ion-content padding>
 	<ion-list>
 		<ion-list-header>Recent</ion-list-header>
-		<button ion-item *ngFor="let activity of activities;let activityId = index" (click)="showModal(activityId)">{{activity.type}}</button>
+		<button ion-item *ngFor="let activity of activities; let activityId = index" (click)="editActivity(activityId)">
+			{{activity.time | date: 'dd. MM'}}: {{activity.type}} für {{activity.duration}} Minuten
+		</button>
 	</ion-list>
 	<ion-fab bottom right>
 		<button ion-fab (click)="addActivity()">

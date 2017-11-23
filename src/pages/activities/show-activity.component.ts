@@ -4,9 +4,9 @@ import {NavParams, ViewController} from "ionic-angular";
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
 
 @Component({
-    templateUrl: 'edit-activities.html'
+    templateUrl: 'show-activity.html'
 })
-export class EditActivitiesComponent{
+export class ShowActivityComponent{
     activityId: number;
     mode: string = "";
 
@@ -19,9 +19,7 @@ export class EditActivitiesComponent{
         this.viewCtrl.dismiss();
     }
 
-    saveActivity(){
-        if(this.activityId){
+    showActivity(){
 
-        }
     }
 }

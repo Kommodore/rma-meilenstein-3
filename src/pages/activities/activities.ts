@@ -3,6 +3,7 @@ import { NavController, ModalController } from 'ionic-angular';
 
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
 import {EditActivitiesComponent} from "./edit-activities.component";
+import {ShowActivityComponent} from "./show-activity.component";
 
 
 @Component({
@@ -25,21 +26,17 @@ export class ActivitiesPage {
     this.activities = this.localStorage.getActivities();
   };
 
-  showModal(index: number = 0) {
-    if(index){
-      console.log("Activity: $(index)");
-    } else {
-      console.log("No index");
-    }
-
-    let editActivity = this.modal.create(EditActivitiesComponent);
-    editActivity.present().then((reason) => {
-
-    });
+  addActivity(){
+      let editActivity = this.modal.create(EditActivitiesComponent);
+      editActivity.onDidDismiss(data =>{
+          this.initActivities();
+      });
+      editActivity.present();
   }
 
-  addActivity(){
-
+  editActivity(activityId) {
+    let editActivity = this.modal.create(ShowActivityComponent, {activityId: activityId});
+    editActivity.present();
   }
 
 }

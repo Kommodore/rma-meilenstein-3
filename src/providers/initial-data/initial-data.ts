@@ -15,7 +15,6 @@ export class InitialDataProvider {
     json_activities: any[];
 
     constructor(public http: Http, private storage: LocalStorageProvider) {
-        console.log('Hello InitialDataProvider Provider');
     }
 
     checkForLSContent(){

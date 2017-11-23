@@ -15,6 +15,8 @@ import {HttpModule} from "@angular/http";
 import {IonicStorageModule} from "@ionic/storage";
 import {LocalStorageProvider} from '../providers/local-storage/local-storage';
 import {InitialDataProvider} from '../providers/initial-data/initial-data';
+import {EditActivitiesComponent} from "../pages/activities/edit-activities.component";
+import {ShowActivityComponent} from "../pages/activities/show-activity.component";
 
 @NgModule({
     declarations: [
@@ -22,7 +24,9 @@ import {InitialDataProvider} from '../providers/initial-data/initial-data';
         ActivitiesPage,
         ContactPage,
         HomePage,
-        TabsPage
+        TabsPage,
+        EditActivitiesComponent,
+        ShowActivityComponent
     ],
     imports: [
         BrowserModule,
@@ -37,6 +41,8 @@ import {InitialDataProvider} from '../providers/initial-data/initial-data';
         ContactPage,
         HomePage,
         TabsPage,
+        EditActivitiesComponent,
+        ShowActivityComponent
     ],
     providers: [
         StatusBar,

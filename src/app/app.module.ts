@@ -17,6 +17,8 @@ import {LocalStorageProvider} from '../providers/local-storage/local-storage';
 import {InitialDataProvider} from '../providers/initial-data/initial-data';
 import {EditActivitiesComponent} from "../pages/activities/edit-activities.component";
 import {ShowActivityComponent} from "../pages/activities/show-activity.component";
+import { Geolocation } from '@ionic-native/geolocation';
+
 
 @NgModule({
     declarations: [
@@ -47,6 +49,7 @@ import {ShowActivityComponent} from "../pages/activities/show-activity.component
     providers: [
         StatusBar,
         SplashScreen,
+        Geolocation,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         LocalStorageProvider,
         InitialDataProvider

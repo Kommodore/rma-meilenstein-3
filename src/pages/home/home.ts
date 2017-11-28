@@ -3,6 +3,7 @@ import {NavController} from 'ionic-angular';
 
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
 import {MapPage} from '../map/map';
+import {InitialDataProvider} from "../../providers/initial-data/initial-data";
 
 @Component({
     selector: 'page-home',
@@ -14,9 +15,15 @@ export class HomePage {
     duration: number = 0;
     activitiesExist: boolean = false;
 
-    constructor(public navCtrl: NavController, public storage: LocalStorageProvider) {
+    constructor(public navCtrl: NavController,
+                public initialData: InitialDataProvider,
+                public storage: LocalStorageProvider) {
         this.storage = storage;
         this.loadLastActivity();
+    }
+
+    ionViewWillEnter(){
+        this.initialData.checkForLSContent();
     }
 
     gotoPage() {

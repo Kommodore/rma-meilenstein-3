@@ -5,7 +5,7 @@ import {LocalStorageProvider} from "../../providers/local-storage/local-storage"
     templateUrl: 'edit-activities.html'
 })
 export class EditActivitiesComponent{
-    constructor(private storage: LocalStorageProvider){
+    constructor(public storage: LocalStorageProvider){
         this.storage = storage;
     }
 

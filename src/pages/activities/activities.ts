@@ -15,7 +15,7 @@ export class ActivitiesPage {
     activities: object[];
 
     constructor(public navCtrl: NavController,
-                private localStorage: LocalStorageProvider,
+                public localStorage: LocalStorageProvider,
                 public navParams: NavParams) {
         this.initActivities();
     }

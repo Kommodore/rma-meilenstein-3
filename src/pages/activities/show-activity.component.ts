@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {NavParams, ViewController} from "ionic-angular";
+import {NavParams, NavController} from "ionic-angular";
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
 
 @Component({
@@ -11,7 +11,7 @@ export class ShowActivityComponent {
     time: string = "";
     duration: number = 0;
 
-    constructor(private storage: LocalStorageProvider, private params: NavParams, private viewCtrl: ViewController) {
+    constructor(public navCtrl: NavController, public storage: LocalStorageProvider, public params: NavParams) {
         this.showActivity();
     }
 
@@ -25,6 +25,6 @@ export class ShowActivityComponent {
 
     deleteActivity() {
         this.storage.removeActivity(this.activityId);
-        this.viewCtrl.dismiss();
+        this.navCtrl.pop();
     }
 }

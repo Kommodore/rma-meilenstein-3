@@ -25,14 +25,6 @@ export class ActivitiesPage {
 
   initActivities() {
     this.activities = this.localStorage.getActivities();
-    this.events.subscribe('change-tab', (action) => {
-        console.log(this);
-        console.log(action);
-        this.events.unsubscribe('change-tab');
-        if(action == "addActivity"){
-            this.addActivity();
-        }
-    })
   }
 
   addActivity(){

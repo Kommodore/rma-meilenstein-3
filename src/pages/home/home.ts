@@ -35,7 +35,10 @@ export class HomePage {
     }
 
     addNewActivity() {
-        this.events.publish('change-tab', 'addActivity');
         this.navCtrl.parent.select(1);
+    }
+
+    visitSettings(){
+
     }
 }

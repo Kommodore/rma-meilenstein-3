@@ -4,10 +4,9 @@ import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
 import {MyApp} from './app.component';
 
 import {ActivitiesPage} from '../pages/activities/activities';
-import {ContactPage} from '../pages/contact/contact';
 import {HomePage} from '../pages/home/home';
 import {TabsPage} from '../pages/tabs/tabs';
-import {MapPage} from '../pages/map/map';
+import {MapPage} from "../pages/map/map";
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
@@ -19,13 +18,14 @@ import {InitialDataProvider} from '../providers/initial-data/initial-data';
 import {EditActivitiesComponent} from "../pages/activities/edit-activities.component";
 import {ShowActivityComponent} from "../pages/activities/show-activity.component";
 import { Geolocation } from '@ionic-native/geolocation';
+import {HelpPage} from "../pages/help/help";
 
 
 @NgModule({
     declarations: [
         MyApp,
         ActivitiesPage,
-        ContactPage,
+        HelpPage,
         HomePage,
         TabsPage,
         MapPage,
@@ -42,7 +42,7 @@ import { Geolocation } from '@ionic-native/geolocation';
     entryComponents: [
         MyApp,
         ActivitiesPage,
-        ContactPage,
+        HelpPage,
         HomePage,
         TabsPage,
         MapPage,

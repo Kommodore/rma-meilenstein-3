@@ -11,7 +11,7 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class LocalStorageProvider {
-    private activities: any[] = [];
+    public activities: any[] = [];
     public amount: number = -1;
 
     constructor(public http: Http, private storage: Storage) {

@@ -6,29 +6,29 @@ import {LocalStorageProvider} from "../../providers/local-storage/local-storage"
 @Component({
     templateUrl: 'show-activity.html'
 })
-export class ShowActivityComponent{
+export class ShowActivityComponent {
     activityId: number;
     type: string = "";
     time: string = "";
     duration: number = 0;
 
-    constructor(private storage: LocalStorageProvider, private params: NavParams, private viewCtrl: ViewController){
+    constructor(private storage: LocalStorageProvider, private params: NavParams, private viewCtrl: ViewController) {
         this.showActivity();
     }
 
-    dismiss(){
+    dismiss() {
         this.viewCtrl.dismiss();
     }
 
-    showActivity(){
+    showActivity() {
         this.activityId = this.params.get("activityId");
-        let activity = this.storage.getActivity(this.activityId);
-        this.type = activity.type;
-        this.time = activity.time;
-        this.duration = activity.duration;
+        let acticity: any = this.storage.getStaticData()[this.activityId];
+        this.type = acticity.type;
+        this.time = acticity.time;
+        this.duration = acticity.duration;
     }
 
-    deleteActivity(){
+    deleteActivity() {
         this.storage.removeActivity(this.activityId);
         this.dismiss();
     }

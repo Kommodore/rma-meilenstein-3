@@ -8,12 +8,12 @@
 </ion-header>
 
 <ion-content padding>
-	<div id="lastActivity" [hidden]="activitiesExist">
+	<div id="lastActivity" [hidden]="!activitiesExist">
 		<h2>Letzte Aktivität:</h2>
-		<p>{{date | date: 'dd. MM HH:mm'}}<br>
+		<p>{{time | date: 'dd.MM'}} um {{time | date: 'HH:mm'}}<br>
 		{{type}} für {{duration}} Minuten</p>
 	</div>
-	<div id="welcome" [hidden]="!activitiesExist">
+	<div id="welcome" [hidden]="activitiesExist">
 		<h3>Willkommen bei SportApp123</h3>
 		<p>Es scheint so, als hättest du noch keine Aktivitäten mit dieser App gespeichert.</p><p>Jetzt loslegen!</p>
 	</div>

@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {Events, NavController} from 'ionic-angular';
+import {NavController} from 'ionic-angular';
 
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
 import {MapPage} from '../map/map';
+import {TabDataProvider} from "../../providers/tab-data/tab-data";
 
 @Component({
     selector: 'page-home',
@@ -10,11 +11,11 @@ import {MapPage} from '../map/map';
 })
 export class HomePage {
     type: string = "";
-    date: string = "";
+    time: string = "";
     duration: number = 0;
     activitiesExist: boolean = false;
 
-    constructor(public navCtrl: NavController, private storage: LocalStorageProvider, private events: Events) {
+    constructor(public navCtrl: NavController, public storage: LocalStorageProvider, public tabData: TabDataProvider) {
         this.storage = storage;
         this.loadLastActivity();
     }
@@ -24,17 +25,18 @@ export class HomePage {
     }
 
     private loadLastActivity() {
-        this.activitiesExist = (this.storage.amount > 0);
-
-        if (this.activitiesExist) {
-            let activity = this.storage.getActivity(this.storage.amount - 1);
-            this.type = activity.type;
-            this.date = activity.date;
-            this.duration = activity.duration;
-        }
+        this.storage.getActivities().subscribe((data) => {
+            this.activitiesExist = (this.storage.entries > 0);
+            this.type = data[this.storage.entries-1].type;
+            this.time = data[this.storage.entries-1].time;
+            this.duration = data[this.storage.entries-1].duration;
+        });
     }
 
     addNewActivity() {
+        console.log("1"+this.tabData.getData("activitiesAction"));
+        this.tabData.setData("activitiesAction", "add");
+        console.log("2"+this.tabData.getData("activitiesAction"));
         this.navCtrl.parent.select(1);
     }
 

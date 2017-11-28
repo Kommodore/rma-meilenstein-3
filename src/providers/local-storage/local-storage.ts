@@ -22,10 +22,19 @@ export class LocalStorageProvider {
 
     fetchActivities() {
         this.storage.get("activities").then((data) => {
-            this.activities = JSON.parse(data);
-            this.entries = this.activities.length;
-            this.activitiesSubject.next(this.activities);
-        })
+            if(data == null){
+                setTimeout(this.fetchActivities(), 1000);
+            } else {
+                if(data.length > 0){
+                    this.activities = JSON.parse(data);
+                    this.entries = this.activities.length;
+                } else {
+                    this.activities = [];
+                    this.entries = 0;
+                }
+                this.activitiesSubject.next(this.activities);
+            }
+        });
     }
 
     getActivities(): Subject<any[]>{
@@ -45,6 +54,7 @@ export class LocalStorageProvider {
         if (this.activities) {
             this.activities.push(activity);
         } else {
+            this.activities = [];
             this.activities[0] = activity
         }
 

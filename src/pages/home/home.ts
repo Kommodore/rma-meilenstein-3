@@ -27,9 +27,11 @@ export class HomePage {
     private loadLastActivity() {
         this.storage.getActivities().subscribe((data) => {
             this.activitiesExist = (this.storage.entries > 0);
-            this.type = data[this.storage.entries-1].type;
-            this.time = data[this.storage.entries-1].time;
-            this.duration = data[this.storage.entries-1].duration;
+            if(this.activitiesExist){
+                this.type = data[this.storage.entries-1].type;
+                this.time = data[this.storage.entries-1].time;
+                this.duration = data[this.storage.entries-1].duration;
+            }
         });
     }
 

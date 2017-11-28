@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import {Storage} from "@ionic/storage";
 import 'rxjs/add/operator/map';
-
-import {LocalStorageProvider} from "../local-storage/local-storage";
 
 /*
   Generated class for the InitialDataProvider provider.
@@ -12,23 +11,18 @@ import {LocalStorageProvider} from "../local-storage/local-storage";
 */
 @Injectable()
 export class InitialDataProvider {
-    json_activities: any[];
-
-    constructor(public http: Http, private storage: LocalStorageProvider) {
+    constructor(public http: Http, public storage: Storage) {
     }
 
     checkForLSContent(){
-        let activities = this.storage.activities;
-
-        if(activities == null || activities.length == 0){
-            this.http.get('../assets/data/activities.json').map(res => res.json()).subscribe(data => {
-                this.json_activities = data.activities;
-
-                for(let i = 0; i < this.json_activities.length; i++){
-                    this.storage.setActivity(this.json_activities[i]);
-                }
-            });
-        }
+        this.storage.get("activities").then((activities) => {
+            if(activities === null){
+                this.http.get('../assets/data/activities.json').map(res => res.json()).subscribe((data) => {
+                    this.storage.set("activities", JSON.stringify(data.activities)).catch((error) => {
+                        console.log("Couldn't create initial data: "+error);
+                    });
+                });
+            }
+        });
     }
-
 }

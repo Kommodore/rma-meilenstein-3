@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {NavParams, ViewController} from "ionic-angular";
+import {ViewController} from "ionic-angular";
 
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
 
@@ -7,12 +7,8 @@ import {LocalStorageProvider} from "../../providers/local-storage/local-storage"
     templateUrl: 'edit-activities.html'
 })
 export class EditActivitiesComponent{
-    activityId: number;
-    mode: string = "";
-
-    constructor(private storage: LocalStorageProvider, private params: NavParams, private viewCtrl: ViewController){
+    constructor(private storage: LocalStorageProvider, private viewCtrl: ViewController){
         this.storage = storage;
-        this.activityId = params.get("activityId");
     }
 
     dismiss(){
@@ -20,8 +16,6 @@ export class EditActivitiesComponent{
     }
 
     saveActivity(){
-        if(this.activityId){
 
-        }
     }
 }

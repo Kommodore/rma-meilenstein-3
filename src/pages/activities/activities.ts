@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
+import {NavController, ModalController, Events} from 'ionic-angular';
 
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
 import {EditActivitiesComponent} from "./edit-activities.component";
@@ -16,15 +16,24 @@ export class ActivitiesPage {
 
   constructor(
     public navCtrl: NavController,
+    public events: Events,
     private localStorage: LocalStorageProvider,
-    private modal: ModalController
+    private modal: ModalController,
   ) {
     this.initActivities();
   }
 
   initActivities() {
     this.activities = this.localStorage.getActivities();
-  };
+    this.events.subscribe('change-tab', (action) => {
+        console.log(this);
+        console.log(action);
+        this.events.unsubscribe('change-tab');
+        if(action == "addActivity"){
+            this.addActivity();
+        }
+    })
+  }
 
   addActivity(){
       let editActivity = this.modal.create(EditActivitiesComponent);

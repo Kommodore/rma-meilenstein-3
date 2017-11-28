@@ -2,17 +2,19 @@
 	<ion-navbar>
 		<ion-title>Aktivität:</ion-title>
 		<ion-buttons left>
-			<button ion-button (click)="dismiss()" class="my-style-for-modal">
+			<button ion-button (click)="dismiss()">
 				Close
 			</button>
+		</ion-buttons>
+		<ion-buttons right>
+			<button ion-button (click)="deleteActivity()"><ion-icon name="trash"></ion-icon></button>
 		</ion-buttons>
 	</ion-navbar>
 </ion-header>
 <ion-content padding>
 	<ion-list>
 		<ion-item>
-			<ion-label floating>Username</ion-label>
-			<ion-input type="text"></ion-input>
+			Aktivität: {{type}}
 		</ion-item>
 		<ion-item>
 			<ion-label floating>Password</ion-label>

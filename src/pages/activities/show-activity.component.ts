@@ -8,11 +8,12 @@ import {LocalStorageProvider} from "../../providers/local-storage/local-storage"
 })
 export class ShowActivityComponent{
     activityId: number;
-    mode: string = "";
+    type: string = "";
+    time: string = "";
+    duration: number = 0;
 
     constructor(private storage: LocalStorageProvider, private params: NavParams, private viewCtrl: ViewController){
-        this.storage = storage;
-        this.activityId = params.get("activityId");
+        this.showActivity();
     }
 
     dismiss(){
@@ -20,6 +21,15 @@ export class ShowActivityComponent{
     }
 
     showActivity(){
+        this.activityId = this.params.get("activityId");
+        let activity = this.storage.getActivity(this.activityId);
+        this.type = activity.type;
+        this.time = activity.time;
+        this.duration = activity.duration;
+    }
 
+    deleteActivity(){
+        this.storage.removeActivity(this.activityId);
+        this.dismiss();
     }
 }

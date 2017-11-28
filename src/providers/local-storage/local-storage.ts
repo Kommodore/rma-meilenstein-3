@@ -11,7 +11,8 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class LocalStorageProvider {
-    activities: any[] = [];
+    private activities: any[] = [];
+    public amount: number = -1;
 
     constructor(public http: Http, private storage: Storage) {
         this.fetchActivities();
@@ -23,6 +24,7 @@ export class LocalStorageProvider {
       }).catch(reason => {
           console.log("Fehler beim auslesen aus dem Local Storage: "+reason);
       });
+      this.amount = this.activities.length;
     }
 
     getActivities() {

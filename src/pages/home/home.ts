@@ -3,7 +3,6 @@ import {NavController} from 'ionic-angular';
 
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
 import {MapPage} from '../map/map';
-import {TabDataProvider} from "../../providers/tab-data/tab-data";
 
 @Component({
     selector: 'page-home',
@@ -15,7 +14,7 @@ export class HomePage {
     duration: number = 0;
     activitiesExist: boolean = false;
 
-    constructor(public navCtrl: NavController, public storage: LocalStorageProvider, public tabData: TabDataProvider) {
+    constructor(public navCtrl: NavController, public storage: LocalStorageProvider) {
         this.storage = storage;
         this.loadLastActivity();
     }
@@ -36,9 +35,7 @@ export class HomePage {
     }
 
     addNewActivity() {
-        console.log("1"+this.tabData.getData("activitiesAction"));
-        this.tabData.setData("activitiesAction", "add");
-        console.log("2"+this.tabData.getData("activitiesAction"));
+        this.navCtrl.parent.activitiesParams = { action: "add"};
         this.navCtrl.parent.select(1);
     }
 

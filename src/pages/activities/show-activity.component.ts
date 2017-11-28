@@ -1,6 +1,5 @@
 import {Component} from "@angular/core";
 import {NavParams, ViewController} from "ionic-angular";
-
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
 
 @Component({
@@ -16,10 +15,6 @@ export class ShowActivityComponent {
         this.showActivity();
     }
 
-    dismiss() {
-        this.viewCtrl.dismiss();
-    }
-
     showActivity() {
         this.activityId = this.params.get("activityId");
         let acticity: any = this.storage.getStaticData()[this.activityId];
@@ -30,6 +25,6 @@ export class ShowActivityComponent {
 
     deleteActivity() {
         this.storage.removeActivity(this.activityId);
-        this.dismiss();
+        this.viewCtrl.dismiss();
     }
 }

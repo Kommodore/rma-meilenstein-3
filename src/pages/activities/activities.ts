@@ -1,10 +1,9 @@
 import {Component} from '@angular/core';
-import {NavController, ModalController, Events} from 'ionic-angular';
+import {NavController, NavParams} from 'ionic-angular';
 
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
 import {EditActivitiesComponent} from "./edit-activities.component";
 import {ShowActivityComponent} from "./show-activity.component";
-import {TabDataProvider} from "../../providers/tab-data/tab-data";
 
 
 @Component({
@@ -16,10 +15,8 @@ export class ActivitiesPage {
     activities: object[];
 
     constructor(public navCtrl: NavController,
-                public events: Events,
                 private localStorage: LocalStorageProvider,
-                private modal: ModalController,
-                public tabData: TabDataProvider) {
+                public navParams: NavParams) {
         this.initActivities();
     }
 
@@ -29,25 +26,18 @@ export class ActivitiesPage {
             this.activities = data;
         });
 
-        console.log("3" + this.tabData.getData("activitiesAction"));
-        if (this.tabData.getData("activitiesAction") && this.tabData.getData("activitiesAction") == "add") {
-            this.tabData.setData("activitiesAction", "done");
-            console.log("4" + this.tabData.getData("activitiesAction"));
+        console.log(this.navParams.get("action"));
+        if(this.navParams.get("action") == "add"){
             this.addActivity();
         }
     }
 
     addActivity() {
-        let editActivity = this.modal.create(EditActivitiesComponent);
-        editActivity.onDidDismiss(data => {
-            this.initActivities();
-        });
-        editActivity.present();
+        this.navCtrl.push(EditActivitiesComponent);
     }
 
     editActivity(activityId) {
-        let editActivity = this.modal.create(ShowActivityComponent, {activityId: activityId});
-        editActivity.present();
+        this.navCtrl.push(ShowActivityComponent, {activityId: activityId});
     }
 
 }

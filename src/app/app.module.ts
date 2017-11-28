@@ -19,7 +19,6 @@ import {EditActivitiesComponent} from "../pages/activities/edit-activities.compo
 import {ShowActivityComponent} from "../pages/activities/show-activity.component";
 import { Geolocation } from '@ionic-native/geolocation';
 import {HelpPage} from "../pages/help/help";
-import {TabDataProvider} from '../providers/tab-data/tab-data';
 
 
 @NgModule({
@@ -56,8 +55,7 @@ import {TabDataProvider} from '../providers/tab-data/tab-data';
         Geolocation,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         LocalStorageProvider,
-        InitialDataProvider,
-        TabDataProvider
+        InitialDataProvider
     ]
 })
 export class AppModule {

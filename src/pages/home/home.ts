@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {Events, NavController} from 'ionic-angular';
 
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
+import { MapPage } from '../map/map';
 
 @Component({
   selector: 'page-home',
@@ -14,9 +15,13 @@ export class HomePage {
     activitiesExist: boolean = false;
 
   constructor(public navCtrl: NavController, private storage: LocalStorageProvider, private events: Events) {
-        this.storage = storage;
-        this.loadLastActivity();
-  }
+      this.storage = storage;
+      this.loadLastActivity();
+      }
+
+      gotoPage() {
+          this.navCtrl.push(MapPage);
+      }
 
     private loadLastActivity() {
         this.activitiesExist = (this.storage.amount > 0);

@@ -1,7 +1,7 @@
 <ion-header>
 	<ion-navbar>
 		<ion-title>
-			About Jonas
+			Aktivitäten
 		</ion-title>
 	</ion-navbar>
 </ion-header>
@@ -14,8 +14,10 @@
 		</button>
 	</ion-list>
 	<ion-fab bottom right>
-		<button ion-fab (click)="addActivity()">
-			<ion-icon name="add"></ion-icon>
-		</button>
+		<button ion-fab><ion-icon name="add"></ion-icon></button>
+		<ion-fab-list side="top">
+			<button ion-fab><ion-icon name="timer"></ion-icon></button>
+			<button ion-fab (click)="addActivity()"><ion-icon name="md-create"></ion-icon></button>
+		</ion-fab-list>
 	</ion-fab>
 </ion-content>

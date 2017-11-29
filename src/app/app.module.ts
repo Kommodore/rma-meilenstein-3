@@ -58,7 +58,7 @@ import {GmapProvider} from '../providers/gmap/gmap';
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         LocalStorageProvider,
         InitialDataProvider,
-    GmapProvider
+        GmapProvider
     ]
 })
 export class AppModule {

@@ -1,6 +1,7 @@
-import {Component} from "@angular/core";
+import {Component, ElementRef, ViewChild} from "@angular/core";
 import {NavParams, NavController} from "ionic-angular";
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
+import {GmapProvider} from "../../providers/gmap/gmap";
 
 @Component({
     templateUrl: 'show-activity.html'
@@ -11,8 +12,13 @@ export class ShowActivityComponent {
     time: string = "";
     duration: number = 0;
 
-    constructor(public navCtrl: NavController, public storage: LocalStorageProvider, public params: NavParams) {
+    @ViewChild('map') mapElement: ElementRef;
+    constructor(public navCtrl: NavController, public storage: LocalStorageProvider, public params: NavParams, public gmap:GmapProvider) {
         this.showActivity();
+    }
+
+    ionViewDidLoad(){
+        this.gmap.initMap(this.mapElement);
     }
 
     showActivity() {

@@ -13,7 +13,7 @@ export class LocationProvider {
   }
 
   startRecoding(){
-    this.inter = setInterval(function(){
+    this.inter = setInterval(dummy =>{
       this.geoLocation.getCurrentPosition().then(pos =>{
           console.log('lat: ' + pos.coords.latitude + ', lng: ' + pos.coords.longitude);
       });

@@ -17,9 +17,10 @@ import {LocalStorageProvider} from '../providers/local-storage/local-storage';
 import {InitialDataProvider} from '../providers/initial-data/initial-data';
 import {EditActivitiesComponent} from "../pages/activities/edit-activities.component";
 import {ShowActivityComponent} from "../pages/activities/show-activity.component";
-import { Geolocation } from '@ionic-native/geolocation';
+import {Geolocation} from '@ionic-native/geolocation';
 import {HelpPage} from "../pages/help/help";
-
+import {GoogleMaps} from '@ionic-native/google-maps';
+import {GmapProvider} from '../providers/gmap/gmap';
 
 @NgModule({
     declarations: [
@@ -53,9 +54,11 @@ import {HelpPage} from "../pages/help/help";
         StatusBar,
         SplashScreen,
         Geolocation,
+        GoogleMaps,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         LocalStorageProvider,
-        InitialDataProvider
+        InitialDataProvider,
+    GmapProvider
     ]
 })
 export class AppModule {

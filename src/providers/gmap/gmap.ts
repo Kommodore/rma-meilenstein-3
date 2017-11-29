@@ -1,4 +1,4 @@
-import { Injectable, ElementRef } from '@angular/core';
+import { Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
 
 declare let google;

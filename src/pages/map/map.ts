@@ -1,7 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Geolocation } from '@ionic-native/geolocation';
 import {GmapProvider} from '../../providers/gmap/gmap';
+import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
 
 
 @Component({
@@ -12,7 +12,7 @@ export class MapPage {
 
   @ViewChild('map') mapElement: ElementRef;
 
-  constructor(public navCtrl: NavController, private geolocation: Geolocation, private gmap: GmapProvider) {
+  constructor(public navCtrl: NavController, private gmap: GmapProvider, public ls: LocalStorageProvider) {
   }
 
   ionViewDidLoad(){
@@ -20,7 +20,8 @@ export class MapPage {
   }
 
   b_showPosition(){
-    this.gmap.showPosition({lat: 53, lng: 9});
+    let coords = this.ls.getStaticData()[0];
+    this.gmap.showPosition(coords.coords[0]);
   }
 
 }

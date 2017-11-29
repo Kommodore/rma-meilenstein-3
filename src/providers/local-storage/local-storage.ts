@@ -12,7 +12,7 @@ import {Subject} from "rxjs/Subject";
 */
 @Injectable()
 export class LocalStorageProvider {
-    public activities: object[] = [];
+    public activities: Activities[] = [];
     public activitiesSubject: Subject<any[]> = new Subject();
     public entries: number = -1;
 
@@ -41,7 +41,7 @@ export class LocalStorageProvider {
         return this.activitiesSubject;
     }
 
-    getStaticData(){
+    getStaticData(): Activities[]{
         return this.activities;
     }
 
@@ -58,7 +58,7 @@ export class LocalStorageProvider {
             this.activities[0] = activity
         }
 
-        this.storage.set("activities", JSON.stringify(this.activities)).then(data => {
+        this.storage.set("activities", JSON.stringify(this.activities)).then(() => {
             this.activitiesSubject.next(this.activities);
         }).catch(reason => {
           console.log("Could not save activity to storage: " + reason);
@@ -73,7 +73,7 @@ export class LocalStorageProvider {
     removeActivity(index) {
         this.activities.splice(index, 1);
 
-        this.storage.set("activities", this.activities).then(data => {
+        this.storage.set("activities", this.activities).then(() => {
             this.activitiesSubject.next(this.activities);
         }).catch(reason => {
             console.log("Could not remove activity: " + reason);
@@ -84,8 +84,20 @@ export class LocalStorageProvider {
      * Clear the whole local storage
      */
     clearStorage() {
-        this.storage.clear().then(data => {
+        this.storage.clear().then(() => {
             this.activitiesSubject.next(this.activities);
         });
     }
+}
+
+class Activities{
+    type: string;
+    time: string;
+    duration: number;
+    coords: Coords[];
+}
+
+class Coords{
+    lat: number;
+    lng: number;
 }

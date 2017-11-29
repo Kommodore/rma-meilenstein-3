@@ -12,8 +12,11 @@
 			Aktivität: {{type}}
 		</ion-item>
 		<ion-item>
-			<ion-label floating>Password</ion-label>
-			<ion-input type="password"></ion-input>
+			Datum: {{time | date: 'dd.MM HH:mm'}}
 		</ion-item>
+		<ion-item>
+			Dauer: {{duration}} Minuten
+		</ion-item>
+		<ion-item #map id="map"></ion-item>
 	</ion-list>
 </ion-content>

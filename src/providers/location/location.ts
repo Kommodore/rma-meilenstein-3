@@ -8,13 +8,13 @@ export class LocationProvider {
   duration: any = 3000;
   inter: any;
 
-  constructor(public geolocation: Geolocation) {
+  constructor(public geoLocation: Geolocation) {
     console.log("Locations");
   }
 
   startRecoding(){
     this.inter = setInterval(function(){
-      this.geolocation.getCurrentPosition().then(pos =>{
+      this.geoLocation.getCurrentPosition().then(pos =>{
           console.log('lat: ' + pos.coords.latitude + ', lng: ' + pos.coords.longitude);
       });
     }, this.duration);

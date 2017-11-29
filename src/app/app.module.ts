@@ -21,11 +21,8 @@ import {ShowActivityComponent} from "../pages/activities/show-activity.component
 import {Geolocation} from '@ionic-native/geolocation';
 import {GoogleMaps} from '@ionic-native/google-maps';
 import {GmapProvider} from '../providers/gmap/gmap';
-<<<<<<< HEAD
 import {LocationProvider} from '../providers/location/location';
-=======
 import { SharedModuleProvider } from '../providers/shared-module/shared-module';
->>>>>>> 50cb33d7902200034e90080001bd69472f3b3ea0
 
 @NgModule({
     declarations: [

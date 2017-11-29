@@ -21,6 +21,7 @@ import {Geolocation} from '@ionic-native/geolocation';
 import {HelpPage} from "../pages/help/help";
 import {GoogleMaps} from '@ionic-native/google-maps';
 import {GmapProvider} from '../providers/gmap/gmap';
+import { SharedModuleProvider } from '../providers/shared-module/shared-module';
 
 @NgModule({
     declarations: [
@@ -58,7 +59,8 @@ import {GmapProvider} from '../providers/gmap/gmap';
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         LocalStorageProvider,
         InitialDataProvider,
-        GmapProvider
+        GmapProvider,
+        SharedModuleProvider
     ]
 })
 export class AppModule {

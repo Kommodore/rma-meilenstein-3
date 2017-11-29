@@ -4,6 +4,7 @@ import {NavController} from 'ionic-angular';
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
 import {MapPage} from '../map/map';
 import {InitialDataProvider} from "../../providers/initial-data/initial-data";
+import {SharedModuleProvider} from "../../providers/shared-module/shared-module";
 
 @Component({
     selector: 'page-home',
@@ -17,7 +18,8 @@ export class HomePage {
 
     constructor(public navCtrl: NavController,
                 public initialData: InitialDataProvider,
-                public storage: LocalStorageProvider) {
+                public storage: LocalStorageProvider,
+                public shared: SharedModuleProvider) {
         this.storage = storage;
         this.loadLastActivity();
     }
@@ -42,7 +44,8 @@ export class HomePage {
     }
 
     addActivity(){
-
+        SharedModuleProvider.setData("addActivityFromHome", true);
+        this.navCtrl.parent.select(1);
     }
 
     visitSettings(){

@@ -4,6 +4,7 @@ import {NavController} from 'ionic-angular';
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
 import {EditActivitiesComponent} from "./edit-activities.component";
 import {ShowActivityComponent} from "./show-activity.component";
+import {SharedModuleProvider} from "../../providers/shared-module/shared-module";
 
 
 @Component({
@@ -15,8 +16,16 @@ export class ActivitiesPage {
     activities: object[];
 
     constructor(public navCtrl: NavController,
-                public localStorage: LocalStorageProvider) {
+                public localStorage: LocalStorageProvider,
+                public shared: SharedModuleProvider) {
         this.initActivities();
+    }
+
+    ionViewWillEnter(){
+        if(SharedModuleProvider.getData("addActivityFromHome") == true){
+            SharedModuleProvider.setData("addActivityFromHome", false);
+            this.addActivity();
+        }
     }
 
     initActivities() {

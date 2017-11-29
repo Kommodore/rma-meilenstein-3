@@ -41,9 +41,8 @@ export class HomePage {
         });
     }
 
-    addNewActivity() {
-        this.navCtrl.parent.activitiesParams = { action: "add"};
-        this.navCtrl.parent.select(1);
+    addActivity(){
+
     }
 
     visitSettings(){

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {NavController} from 'ionic-angular';
 
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
 import {EditActivitiesComponent} from "./edit-activities.component";
@@ -15,8 +15,7 @@ export class ActivitiesPage {
     activities: object[];
 
     constructor(public navCtrl: NavController,
-                public localStorage: LocalStorageProvider,
-                public navParams: NavParams) {
+                public localStorage: LocalStorageProvider) {
         this.initActivities();
     }
 
@@ -25,11 +24,6 @@ export class ActivitiesPage {
         this.localStorage.getActivities().subscribe((data) => {
             this.activities = data;
         });
-
-        console.log(this.navParams.get("action"));
-        if(this.navParams.get("action") == "add"){
-            this.addActivity();
-        }
     }
 
     addActivity() {

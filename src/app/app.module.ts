@@ -61,11 +61,8 @@ import { SharedModuleProvider } from '../providers/shared-module/shared-module';
         LocalStorageProvider,
         InitialDataProvider,
         GmapProvider,
-<<<<<<< HEAD
-        LocationProvider
-=======
+        LocationProvider,
         SharedModuleProvider
->>>>>>> 50cb33d7902200034e90080001bd69472f3b3ea0
     ]
 })
 export class AppModule {

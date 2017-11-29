@@ -6,12 +6,16 @@
 <ion-content padding>
 	<ion-list>
 		<ion-item>
-			<ion-label floating>Username</ion-label>
-			<ion-input type="text"></ion-input>
-		</ion-item>
-		<ion-item>
-			<ion-label floating>Password</ion-label>
-			<ion-input type="password"></ion-input>
+			<form (ngSubmit)="login()">
+				<label for="type">Typ</label>
+				<input type="text" name="type" id="type" formControlName="type">
+				<br/>
+				<label for="password">password</label>
+				<input type="password" name="password" id="password" formControlName="password">
+				<ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="myDate"></ion-datetime>
+				<br/>
+				<button type="submit">log in</button>
+			</form>
 		</ion-item>
 	</ion-list>
 </ion-content>

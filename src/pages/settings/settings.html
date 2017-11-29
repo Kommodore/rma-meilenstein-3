@@ -8,5 +8,13 @@
 
 
 <ion-content padding>
-
+  <ion-item>
+    <ion-label>Get Locations</ion-label>
+    <ion-toggle checked="false"></ion-toggle>
+  </ion-item>
+  <ion-item>
+    <ion-range min="3000" max="30000" step="1000" [(ngModel)]="locationProvider.duration">
+      <ion-icon range-left name="clock"></ion-icon>
+    </ion-range>
+  </ion-item>
 </ion-content>

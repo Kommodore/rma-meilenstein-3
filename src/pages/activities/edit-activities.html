@@ -6,16 +6,20 @@
 <ion-content padding>
 	<ion-list>
 		<ion-item>
-			<form (ngSubmit)="login()">
-				<label for="type">Typ</label>
-				<input type="text" name="type" id="type" formControlName="type">
-				<br/>
-				<label for="password">password</label>
-				<input type="password" name="password" id="password" formControlName="password">
-				<ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="myDate"></ion-datetime>
-				<br/>
-				<button type="submit">log in</button>
-			</form>
+			<ion-label>Aktivität</ion-label>
+			<ion-select [(ngModel)]="type">
+				<ion-option value="Laufen">Laufen</ion-option>
+				<ion-option value="Fahrradfahren">Fahrradfahren</ion-option>
+				<ion-option value="Schwimmen">Schwimmen</ion-option>
+			</ion-select>
+		</ion-item>
+		<ion-item>
+			<ion-label>Datum</ion-label>
+			<ion-datetime displayFormat="D.MMM.YYYY H:mm" [(ngModel)]="myDate"></ion-datetime>
+		</ion-item>
+		<ion-item>
+			<ion-label floating>Dauer</ion-label>
+			<ion-input type="number" min="0" [(ngModel)]="duration"></ion-input>
 		</ion-item>
 	</ion-list>
 </ion-content>

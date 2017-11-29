@@ -23,4 +23,6 @@ export class GmapProvider {
     this.map.panTo(position);
   }
 
+
+
 }

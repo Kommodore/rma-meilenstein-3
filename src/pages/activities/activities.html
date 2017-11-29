@@ -10,7 +10,7 @@
 	<ion-list>
 		<ion-list-header>Recent</ion-list-header>
 		<button ion-item *ngFor="let activity of activities; let activityId = index" (click)="editActivity(activityId)">
-			{{activity.time | date: 'dd. MM'}}: {{activity.type}} für {{activity.duration}} Minuten
+			{{activity.time | date: 'dd.MM'}}: {{activity.type}} für {{activity.duration}} Minuten
 		</button>
 	</ion-list>
 	<ion-fab bottom right>

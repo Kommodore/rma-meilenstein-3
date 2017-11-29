@@ -13,6 +13,7 @@ export class ShowActivityComponent {
     duration: number = 0;
 
     @ViewChild('map') mapElement: ElementRef;
+    
     constructor(public navCtrl: NavController, public storage: LocalStorageProvider, public params: NavParams, public gmap:GmapProvider) {
         this.showActivity();
     }

@@ -7,6 +7,7 @@ import {ActivitiesPage} from '../pages/activities/activities';
 import {HomePage} from '../pages/home/home';
 import {TabsPage} from '../pages/tabs/tabs';
 import {MapPage} from "../pages/map/map";
+import {HelpPage} from "../pages/help/help";
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
@@ -18,9 +19,9 @@ import {InitialDataProvider} from '../providers/initial-data/initial-data';
 import {EditActivitiesComponent} from "../pages/activities/edit-activities.component";
 import {ShowActivityComponent} from "../pages/activities/show-activity.component";
 import {Geolocation} from '@ionic-native/geolocation';
-import {HelpPage} from "../pages/help/help";
 import {GoogleMaps} from '@ionic-native/google-maps';
 import {GmapProvider} from '../providers/gmap/gmap';
+import {LocationProvider} from '../providers/location/location';
 
 @NgModule({
     declarations: [
@@ -37,7 +38,7 @@ import {GmapProvider} from '../providers/gmap/gmap';
         BrowserModule,
         IonicModule.forRoot(MyApp),
         IonicStorageModule.forRoot(),
-        HttpModule,
+        HttpModule
     ],
     bootstrap: [IonicApp],
     entryComponents: [
@@ -58,7 +59,8 @@ import {GmapProvider} from '../providers/gmap/gmap';
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         LocalStorageProvider,
         InitialDataProvider,
-        GmapProvider
+        GmapProvider,
+        LocationProvider
     ]
 })
 export class AppModule {

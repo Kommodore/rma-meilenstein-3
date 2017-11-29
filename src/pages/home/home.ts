@@ -26,8 +26,8 @@ export class HomePage {
         this.initialData.checkForLSContent();
     }
 
-    gotoPage() {
-        this.navCtrl.push(MapPage);
+    goToMap(){
+      this.navCtrl.push(MapPage);
     }
 
     private loadLastActivity() {
@@ -46,6 +46,6 @@ export class HomePage {
     }
 
     visitSettings(){
-
     }
+
 }

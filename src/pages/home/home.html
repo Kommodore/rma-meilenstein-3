@@ -2,7 +2,7 @@
 	<ion-navbar>
 		<ion-title>Home</ion-title>
 		<ion-buttons right>
-			<button ion-button (click)="visitSettings()"><ion-icon large name="settings"></ion-icon></button>
+			<button ion-button (click)="pushPage(1)"><ion-icon large name="settings"></ion-icon></button>
 		</ion-buttons>
 	</ion-navbar>
 </ion-header>
@@ -20,5 +20,5 @@
 		<p>Jetzt loslegen!<span style="font-size: 1.5em;">\t😍</span></p>
 	</div>
 	<button ion-button block (click)="addActivity()">Aktivität hinzufügen</button>
-	<button ion-button block (click)="goToMap()">Zeig mir diese FUCKING Map</button>
+	<button ion-button block (click)="pushPage(0)">Zeig mir diese FUCKING Map</button>
 </ion-content>

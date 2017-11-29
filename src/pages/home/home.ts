@@ -3,6 +3,7 @@ import {NavController} from 'ionic-angular';
 
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
 import {MapPage} from '../map/map';
+import {SettingsPage} from '../settings/settings';
 import {InitialDataProvider} from "../../providers/initial-data/initial-data";
 import {SharedModuleProvider} from "../../providers/shared-module/shared-module";
 
@@ -28,8 +29,12 @@ export class HomePage {
         this.initialData.checkForLSContent();
     }
 
-    goToMap(){
-      this.navCtrl.push(MapPage);
+    pushPage(page){
+      if(page == 0){
+        this.navCtrl.push(MapPage);
+      }else if(page == 1){
+        this.navCtrl.push(SettingsPage);
+      }
     }
 
     private loadLastActivity() {
@@ -46,9 +51,6 @@ export class HomePage {
     addActivity(){
         SharedModuleProvider.setData("addActivityFromHome", true);
         this.navCtrl.parent.select(1);
-    }
-
-    visitSettings(){
     }
 
 }

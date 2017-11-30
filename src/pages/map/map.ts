@@ -32,6 +32,7 @@ export class MapPage {
       duration: duration,
       coords: coords
     })
+    this.location.setCoords();
     this.viewCtrl.dismiss();
   }
 

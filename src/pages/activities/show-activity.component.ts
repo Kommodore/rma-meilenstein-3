@@ -16,16 +16,11 @@ export class ShowActivityComponent {
     @ViewChild('map') mapElement: ElementRef;
 
     constructor(public navCtrl: NavController, public storage: LocalStorageProvider, public params: NavParams, public gmap:GmapProvider) {
-        this.gmap.initMap(this.mapElement);
-        setTimeout(() => {
-            console.log("Im Timeout");
-        }, 5000);
-        this.showActivity();
     }
 
     ionViewWillEnter(){
-        //this.gmap.initMap(this.mapElement);
-        console.log("da");
+      this.gmap.initMap(this.mapElement);
+      this.showActivity();
     }
 
     showActivity() {
@@ -36,11 +31,10 @@ export class ShowActivityComponent {
         this.duration = acticity.duration;
         this.coords = acticity.coords;
 
-        console.log(this.coords);
-        let c1 = [this.coords[0].lat, this.coords[0].lng];
-
-        this.gmap.showPosition(c1);
-        this.gmap.addPolyLines(this.coords);
+        if(this.coords.length != 0){
+          this.gmap.showPosition(this.coords[0]);
+          this.gmap.addPolyLines(this.coords);
+        }
     }
 
     deleteActivity() {

@@ -49,4 +49,8 @@ export class LocationProvider {
     return this.coords;
   }
 
+  setCoords(){
+    this.coords = [];
+  }
+
 }

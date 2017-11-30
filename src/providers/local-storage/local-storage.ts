@@ -4,12 +4,6 @@ import {Storage} from "@ionic/storage";
 import 'rxjs/add/operator/map';
 import {Subject} from "rxjs/Subject";
 
-/*
-  Generated class for the LocalStorageProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class LocalStorageProvider {
     public activities: Activities[] = [];

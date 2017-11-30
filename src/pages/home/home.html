@@ -2,16 +2,17 @@
 	<ion-navbar>
 		<ion-title>Home</ion-title>
 		<ion-buttons right>
-			<button ion-button (click)="pushPage(1)"><ion-icon large name="settings"></ion-icon></button>
+			<button ion-button (click)="settingsPage()"><ion-icon large name="settings"></ion-icon></button>
 		</ion-buttons>
 	</ion-navbar>
 </ion-header>
 
 <ion-content padding>
 	<div id="lastActivity" [hidden]="!activitiesExist">
-		<h2>Letzte Aktivität:</h2>
-		<p>{{time | date: 'dd.MM'}} um {{time | date: 'HH:mm'}}<br>
-		{{type}} für {{duration}} Minuten</p>
+		<h3>Letzte Aktivität:</h3>
+		<h4>{{type}}</h4>
+		<h6>am {{time | date: 'dd.MM'}} um {{time | date: 'HH:mm'}}</h6>
+		<h6>für {{duration}} Minuten</h6>
 	</div>
 	<div id="welcome" [hidden]="activitiesExist">
 		<br><br><h3 text-center>Willkommen bei GenericSports,</h3>
@@ -19,6 +20,6 @@
 		<p>Es scheint so, als hättest du noch keine Aktivitäten mit dieser App gespeichert.</p>
 		<p>Jetzt loslegen!<span style="font-size: 1.5em;">\t😍</span></p>
 	</div>
-	<button ion-button block (click)="addActivity()">Aktivität hinzufügen</button>
-	<button ion-button block (click)="pushPage(0)">Zeig mir diese FUCKING Map</button>
+	<br><br><br><br>
+	<button ion-button  block (click)="addActivity()">Aktivität hinzufügen</button>
 </ion-content>

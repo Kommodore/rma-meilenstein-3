@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
-import {MapPage} from '../map/map';
 import {SettingsPage} from '../settings/settings';
 import {InitialDataProvider} from "../../providers/initial-data/initial-data";
 import {SharedModuleProvider} from "../../providers/shared-module/shared-module";
@@ -29,12 +28,8 @@ export class HomePage {
         this.initialData.checkForLSContent();
     }
 
-    pushPage(page){
-      if(page == 0){
-        this.navCtrl.push(MapPage);
-      }else if(page == 1){
+    settingsPage(){
         this.navCtrl.push(SettingsPage);
-      }
     }
 
     private loadLastActivity() {

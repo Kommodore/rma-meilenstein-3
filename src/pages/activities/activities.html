@@ -3,6 +3,9 @@
 		<ion-title>
 			Aktivitäten
 		</ion-title>
+		<ion-buttons right>
+			<button ion-button (click)="settingsPage()"><ion-icon large name="settings"></ion-icon></button>
+		</ion-buttons>
 	</ion-navbar>
 </ion-header>
 
@@ -16,8 +19,8 @@
 	<ion-fab bottom right>
 		<button ion-fab><ion-icon name="add"></ion-icon></button>
 		<ion-fab-list side="top">
-			<button ion-fab><ion-icon name="timer"></ion-icon></button>
-			<button ion-fab (click)="addActivity()"><ion-icon name="md-create"></ion-icon></button>
+			<button ion-fab (click)="addActivity(true)"><ion-icon name="timer"></ion-icon></button>
+			<button ion-fab (click)="addActivity(false)"><ion-icon name="md-create"></ion-icon></button>
 		</ion-fab-list>
 	</ion-fab>
 </ion-content>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import {LocationProvider} from '../../providers/location/location'
 
 @Component({
@@ -7,8 +7,7 @@ import {LocationProvider} from '../../providers/location/location'
   templateUrl: 'settings.html',
 })
 export class SettingsPage {
-
-  constructor(public navCtrl: NavController, private locationProvider: LocationProvider) {
+  constructor(public navCtrl: NavController, public locationProvider: LocationProvider) {
   }
 
   ionViewDidLoad() {

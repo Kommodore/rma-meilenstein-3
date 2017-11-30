@@ -7,8 +7,26 @@
 <ion-header>
 	<ion-navbar>
 		<ion-title>Anleitung</ion-title>
+		<ion-buttons right>
+			<button ion-button (click)="settingsPage()"><ion-icon large name="settings"></ion-icon></button>
+		</ion-buttons>
 	</ion-navbar>
 </ion-header>
 <ion-content padding>
 	<h2>Willkommen bei GenericSports!</h2>
+
+	<h5>Home</h5>
+	<p>Auf der Home Seite wird der Benutzer begrüßt und ihm werden Informationeh zu seiner letzten Aktivität angezeigt.
+	Sollte er noch keine Aktivität eingetragen haben, wird er stattdessen einfach begrüßt. Von hier kann direkt eine
+	Aktivität aufgenommen werden.</p>
+
+	<h5>Aktivitäten</h5>
+	<p>Hier kann der Benutzer in einer Liste alle seine bisherigen Aktivitäten einsehen und nach einem Klick auf diese werden
+	ihm zu dieser die Details einschließlich einer Karte angezeigt. Wenn der Benutzer mittels dem "Plus"-Icon eine Aktivität
+	hinzufügen möchte kann er außerdem auswählen, ob er eine Aktivität so eintragen möchte (weil er die nicht aufgenommen hat)
+	oder kann eine neue Aktivität aufnehmen. Bei dieser wird dann auch seine Wegstrecke gespeichert.</p>
+
+	<h5>Einstellungen</h5>
+	<p>Auf der Einstellungsseite kann der Benutzer auswählen, ob sein Standort getrackt werden soll und in welchem
+		Intervall dies geschehen soll.</p>
 </ion-content>

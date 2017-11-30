@@ -15,11 +15,12 @@
 		</ion-item>
 		<ion-item>
 			<ion-label>Datum</ion-label>
-			<ion-datetime displayFormat="D.MMM.YYYY H:mm" [(ngModel)]="myDate"></ion-datetime>
+			<ion-datetime displayFormat="D.MMM.YYYY H:mm" [(ngModel)]="date"></ion-datetime>
 		</ion-item>
 		<ion-item>
 			<ion-label floating>Dauer</ion-label>
 			<ion-input type="number" min="0" [(ngModel)]="duration"></ion-input>
 		</ion-item>
 	</ion-list>
+	<button ion-button block (click)="saveActivity()">Aktivität speichern</button>
 </ion-content>

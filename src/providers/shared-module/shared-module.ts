@@ -14,7 +14,6 @@ export class SharedModuleProvider {
     private static data: object = {};
 
     constructor(public http: Http) {
-        console.log('Hello SharedModuleProvider Provider');
     }
 
     static setData(key: string, data: any) {

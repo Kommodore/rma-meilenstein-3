@@ -5,6 +5,8 @@ import {LocalStorageProvider} from "../../providers/local-storage/local-storage"
 import {EditActivitiesComponent} from "./edit-activities.component";
 import {ShowActivityComponent} from "./show-activity.component";
 import {SharedModuleProvider} from "../../providers/shared-module/shared-module";
+import {MapPage} from "../map/map";
+import {SettingsPage} from "../settings/settings";
 
 
 @Component({
@@ -24,7 +26,7 @@ export class ActivitiesPage {
     ionViewWillEnter(){
         if(SharedModuleProvider.getData("addActivityFromHome") == true){
             SharedModuleProvider.setData("addActivityFromHome", false);
-            this.addActivity();
+            this.addActivity(true);
         }
     }
 
@@ -35,12 +37,19 @@ export class ActivitiesPage {
         });
     }
 
-    addActivity() {
-        this.navCtrl.push(EditActivitiesComponent);
+    addActivity(record: boolean) {
+        if(record){
+            this.navCtrl.push(MapPage);
+        } else {
+            this.navCtrl.push(EditActivitiesComponent);
+        }
     }
 
     editActivity(activityId) {
         this.navCtrl.push(ShowActivityComponent, {activityId: activityId});
     }
 
+    settingsPage(){
+        this.navCtrl.push(SettingsPage);
+    }
 }

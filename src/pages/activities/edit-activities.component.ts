@@ -30,7 +30,6 @@ export class EditActivitiesComponent{
     }
 
     saveActivity(){
-        console.log("drine");
         let newActivity = {
             type: this.type,
             time: this.date,

@@ -11,9 +11,10 @@ export class ShowActivityComponent {
     type: string = "";
     time: string = "";
     duration: number = 0;
+    coords: any = [];
 
     @ViewChild('map') mapElement: ElementRef;
-    
+
     constructor(public navCtrl: NavController, public storage: LocalStorageProvider, public params: NavParams, public gmap:GmapProvider) {
         this.showActivity();
     }
@@ -28,6 +29,13 @@ export class ShowActivityComponent {
         this.type = acticity.type;
         this.time = acticity.time;
         this.duration = acticity.duration;
+        this.coords = acticity.coords;
+
+        console.log(this.coords);
+        let c1 = [this.coords[0].lat, this.coords[0].lng];
+
+        //this.gmap.showPosition(c1);
+        this.gmap.addPolyLines(this.coords);
     }
 
     deleteActivity() {
